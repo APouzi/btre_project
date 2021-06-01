@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -57,8 +58,8 @@ ROOT_URLCONF = 'btre.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    # :47 we want to tell templates where to look. Brad says he puts his templates in the root and not in the pages or anything and to let it know that we are going to say "os.path.join(BASE_DIR, 'templates')". @1:20 then we want to go into the root of the project and create a folder called "Templates" and go there.. He also talks about how it's up to you how to organize templates but he likes to categorize them by application and has a folder within there for that. @1:40 create a folder within Templates called page, we then created an index and about html file inside that folder. (2:06 go to Templates.Pages folder)
-        'DIRS': [],
+    # :47 we want to tell templates where to look. Brad says he puts his templates in the root and not in the pages or anything and to let it know that we are going to say "os.path.join(BASE_DIR, 'templates')" BASE_DIR means base directory and the folder name we want to use is "templates". @1:20 then we want to go into the root of the project and create a folder called "Templates" and go there.. He also talks about how it's up to you how to organize templates but he likes to categorize them by application and has a folder within there for that. @1:40 create a folder within Templates called page, we then created an index and about html file inside that folder. (2:06 go to Templates.Pages folder and input the <h1> tags in the html files)
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
