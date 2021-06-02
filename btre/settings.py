@@ -113,7 +113,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# Static Files & Paths - 2:36 we now have a static url that is set to static, there already. But we want to add two other things here. One is going to be the STATIC_ROOT. The idea of this is when you deploy your application, you run a command called Collect Static and it goes into all of your apps. And if it has a static folder, it takes everything out and puts it into a root static folder. So that's what we're defining here. Just like we did with the templates, instead we input in "static", we use the "os.path.join(BASE_DIR, 'static')""
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+# 3:11 We input the second one, "STATICFILES_DIRS". We want to set the location of the static folder we just created, which is in this BTR folder. So the way that we can do that is OS.path.join(BASE_DIR, 'btre/static') Base Dir, and then we want btre/static.(3:53 he then inputs the command "python manage.py collectstatic", what this does is find any static folders we have and create one into whatever we define as the static root. You can call this anything. 4:21 he runs it, you can see that it actually created a static folder in our route, which has not only the stuff that we put in the our root, but also the static admin CSS and stuff files. So when we deploy, this is actually where it looks for everything, including the admin costs and all that stuff. So once we put this on our server, we want to run that command. Now, one thing we don't want is to push this to our repository. ) 4:52 Now, one thing we don't want is to push this to our repository. So we're going to go to our .gitignore and we're actually going to add "/static". then another thing that I forgot to do is to add a slash in front of "media" because I only want the root static and media to to not be pushed to the repository.
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'btre/static')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -1,2 +1,14 @@
-
- {% comment %} So I am going to be using "emmet" or type in "!" then "Tab" {% endcomment %}
+{% comment %} So I am going to be using "emmet" or type in "!" then "Tab", we then input the new title (which we can have dynamic later) and then we have the body is where we will be extending everything. That way we have this wrapper {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT Real Estate</title>
+</head>
+<body>
+    {% comment %} 5:43 - To extend layout, we will be using the jinja syntax that django uses by default, input "block content" then end it with an endblock, like flask (6:25 go to index.html) {% endcomment %}
+    {% block content %} {% endblock %}
+</body>
+</html>

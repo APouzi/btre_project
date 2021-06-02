@@ -3,4 +3,4 @@
 
 # Pages Templates & Base Layout - 00:00 You want to go to settings.py to make changes to the Directory so we can allow templates to be used. (:32 go to Settings.py)
 
-# Static Files & Paths
+# Static Files & Paths - 00:00 We want to handle static files. Then we want to go to the btre_resources folder we downloaded and put in our doc folder. "C:\Users\dimit\Documents\btre_resources\btre_theme\dist\assets". This has all our CSS and such. We want to bring these in as static assets. What we do is we go into the btre_project > btre, and inside the btre folder NOT btre_project folder, we create a directory called "static" and in there we move the whole CSS, JS and Fonts folders but for images we don't want them all(yet), we just want the lightbox and the images there without the folders. We then create a directory in the static called "img" and put all the images in there. (2:23 Now we want to go to our btre/setting.py file, bottom of file)
