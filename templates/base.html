@@ -1,3 +1,4 @@
+{% load static %}
 {% comment %} So I am going to be using "emmet" or type in "!" then "Tab", we then input the new title (which we can have dynamic later) and then we have the body is where we will be extending everything. That way we have this wrapper {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
@@ -5,10 +6,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% comment %}Bootstrap Layout Markup - 1:57 Here we paste in the code we got from the file on notepad++. (2:00 go back to index.html in dist and go to bottom and copy the three js scripts at the bottom) {% endcomment %}
+{% comment %}Bootstrap Layout Markup - 3:56 remove "assets/" from css files above instead open up a "temple tag" and change the stuff as below (change the href of "assets/css/bootstrap.css" to what it is below now) So this will actually reference whatever our static folder is, which we defined in our settings. it'll look for a success all access and it should be able to find it{% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% comment %} Bootstrap Layout Markup - 4:45 Dont forget lightbox {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
     <title>BT Real Estate</title>
 </head>
 <body>
-    {% comment %} 5:43 - To extend layout, we will be using the jinja syntax that django uses by default, input "block content" then end it with an endblock, like flask (6:25 go to index.html) {% endcomment %}
+
+{% comment %}}Bootstrap Layout Markup - 10:59 now we just need to bring those in with the temple tags, use include and it's in the partials directory. Put footer under block content. {% endcomment %}
+{% include 'partials/_topbar.html' %}
+{% include 'partials/_navbar.html' %}
+{% comment %}Bootstrap Layout Markup - 12:13 the logo is a static asset. So we're going to go to our NAV bar. Partial because that's where the logo is, you can see we still have it pointing to like assets, so we want to change that. Now, remember, if we're going to be using static, we need to up at the top, we need to load static. (12:24 go to _navbar.html) {% endcomment %}
+
+{% comment %}Pages Templates & Base Layout - 5:43 To extend layout, we will be using the jinja syntax that django uses by default, input "block content" then end it with an endblock, like flask (6:25 go to index.html) {% endcomment %}
     {% block content %} {% endblock %}
+
+{% include 'partials/_footer.html' %}
+
+{% comment %}Bootstrap Layout Markup -  2:15 Here we paste in the scripts we got from the notepad file into here, above end of body tag.  now, if I save this the way it is, obviously, this is not going to work. So if I reload this and we take a look at our chrome tools and our console, we're going to get a ton of errors here because it's looking for these files in the error message box.  So the way that we can reference the static files that we just brought in, we have to we have to actually do a couple of things here. So at the very top of this HTML file, you want to use your "static helper" so you input load static. (3:05 go to top of this file and put load static helper){% endcomment %}
+{% comment %} Bootstrap Layout Markup - 3:12 now wherever we have a static file coming in, like, let's say this all access, which is the font awesome file, what we want to do is in the graph. We want to first of all, get rid of this asset slash because there's no such thing in our general project and we want to open up a template tag. (3:50 go up to links and change the href's to dynamic routes with the temple tags)  {% endcomment %}
+
+{% comment %} Bootstrap Layout Markup - 5:09 do the same thing to the script tags as you did above (turn src "assets/js/jquery-3.3.1.min.js" to below. 6:05 All right, so again, it should be looking in whatever a static folder is and then looking at these {% endcomment %}
+{% comment %} Bootstrap Layout Markup -   6:40 he goes to see it on the localhost and we notice there is slight changes. We go into console on dev tools online and notice no problems. This is how we implement static files within our template. Now we want to add stuff like navbar and such. 7:37 so if we head to our text editor and grab the top bar and nav bar and paste that in here and put it above the block content. 8:18 the othr thing is the footer so grab that at the bottom and put it above the scripts and after block content, which btw the "year" in the JS is coming from there. (9:00 he looks around on localhost) These are going to be on every page that extends the base. About doesn't work, yet.{% endcomment %}
+
+
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src= "{% static 'js/bootstrap.bundle.min.js' %} "></script>
+  <script src= "{% static 'js/lightbox.min.js' %} "></script>
+  <script src="{% static 'js/main.js' %} "></script>
 </body>
 </html>
+
+{% comment %}Bootstrap Layout Markup - 9:10 don't want our basic HTML to be cluttered up with all of this markup. So what we can do is we can create a separate folder in our templates folder called "partials". Right now, inside partials, I want to put the nav bar everything we just brought in the nav bar, the top bar and the footer. So we want to separate four separate file for all of those.
+Now, since they're parshall's, the convention is to use an underscore in front. (9:52 after creating the partials folder, we create the html files to break up the base.html file with the _navbar.html and etc, after all that bring the html code in){% endcomment %}
+
+
