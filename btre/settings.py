@@ -23,6 +23,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'pages.apps.PagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,11 +44,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'btre.urls'
 
-# 00:39 you want to go down to here, with all the key value pairs and it has the "DIRS". Which is where we want go. 
+#Pages Templates & Base Layout - 00:39 you want to go down to here, with all the key value pairs and it has the "DIRS". Which is where we want go. 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    # :47 we want to tell templates where to look. Brad says he puts his templates in the root and not in the pages or anything and to let it know that we are going to say "os.path.join(BASE_DIR, 'templates')" BASE_DIR means base directory and the folder name we want to use is "templates". @1:20 then we want to go into the root of the project and create a folder called "Templates" and go there.. He also talks about how it's up to you how to organize templates but he likes to categorize them by application and has a folder within there for that. @1:40 create a folder within Templates called page, we then created an index and about html file inside that folder. (2:06 go to Templates.Pages folder and input the <h1> tags in the html files)
+#Pages Templates & Base Layout - 00:47 we want to tell templates where to look. Brad says he puts his templates in the root and not in the pages or anything and to let it know that we are going to say "os.path.join(BASE_DIR, 'templates')" BASE_DIR means base directory and the folder name we want to use is "templates".
+#@1:20 then we want to go into the root of the project and create a folder called "Templates" and go there. He also talks about how it's up to you how to organize templates but he likes to categorize them by application and has a folder within there for that. @1:40 create a folder within Templates called page, we then created an index and about html file inside that folder. (2:06 go to Templates.Pages folder and input the <h1> tags in the html files) (2:15 go to pages/urls.py)
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
