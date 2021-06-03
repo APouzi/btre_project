@@ -19,11 +19,11 @@ ALLOWED_HOSTS = []
 
 #Creating The Pages App -  2:30 We are going to put "pages.apps.PagesConfig" into installed apps. He got this from "apps.py" in pages. @3:40ish he talks about how autopep3 might come up when you save this and you should just install it in the virtual environment. @4:10 close that up and now he wants to create a urls.py file for the pages app. <create file called "urls.py" in the pages folder and go to it)
 # Application definition
-
-# Application definition
-
-INSTALLED_APPS = [
+INSTALLED_APPS = [ 
     'pages.apps.PagesConfig',
+#Listings URLS & Templates - 5:36 Here we will be adding the listings and realtors definitions for the installed apps. 5:44 now we need to create our views methods that we had in our listings/urls.py (5:55 go to listings/views.py to create methods). Note we cannot do a "python manage.py startapp realtors" or whatever app if we already inputted the defition of it in here.
+    'listings.apps.ListingsConfig',
+    'realtors.apps.RealtorsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -35,9 +35,15 @@
           >
 {% comment %} Index, About & Linking - 6:07 Same for about but use about instead of index, because thats the name we gave it on urls.py.{% endcomment %}
             <a class="nav-link" href="{% url 'about' %}">About</a>
-          <li class="nav-item mr-3">
-{% comment %} Index, About & Linking - 6:25 now for listing, we have a featured listings, if we try to do the same, we get an error because that doesn't exist, so for now put index. {% endcomment %}
-            <a class="nav-link" href="{% url 'index' %}"">Featured Listings</a>
+          <li 
+          {% if 'listings' in request.path  %}
+          class="nav-item active mr-3"
+          {% else %}
+          class="nav-item mr-3"
+          {% endif %}>
+{% comment %} Index, About & Linking - 6:25 now for listing, we have a featured listings, if we try to do the same, we get an error because that doesn't exist, so for now put url 'index'. {% endcomment %}
+{% comment %} Listings URLs & Template - 14:22 we finally change this to the proper route, so now "url 'listings'". Then we put in the conditional li tag like above, and instead of about we test of listings {% endcomment %}
+            <a class="nav-link" href="{% url 'listings' %}"">Featured Listings</a>
           </li>
         </ul>
 
