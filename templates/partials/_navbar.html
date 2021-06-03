@@ -2,8 +2,9 @@
 {% load static %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
-      {% comment %}12:38 let's go down to where we have our logo, we're going to get rid of the "assets/" and we're going to put in our template tag with the static keyword. As we did before   END OF VIDEO {% endcomment %}
+{% comment %}Index, About & Linking - 5:40 first lets change the branding to go home page, so throw a url static in there.   {% endcomment %}
+      <a class="navbar-brand" href="{% url 'index' %}">
+      {% comment %}Bootstrap Layout Markup - 12:38 let's go down to where we have our logo, we're going to get rid of the "assets/" and we're going to put in our template tag with the static keyword. As we did before   END OF VIDEO {% endcomment %}
         <img src=" {% static 'img/logo.png' %}" class="logo" alt="">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
@@ -12,10 +13,12 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
           <li class="nav-item active mr-3">
-            <a class="nav-link" href="/">Home</a>
+{% comment %} Index, About & Linking - 6:00 Do the same thing for home and change it to temple tags with url index in there  {% endcomment %}
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
+{% comment %} Index, About & Linking - 6:07 Same for about but use about instead of index, because thats the name we gave it on urls.py {% endcomment %}
           <li class="nav-item mr-3">
-            <a class="nav-link" href="about">About</a>
+            <a class="nav-link" href="{% static 'about' %}">About</a>
           </li>
           <li class="nav-item mr-3">
             <a class="nav-link" href="listings.html">Featured Listings</a>
