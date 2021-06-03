@@ -12,16 +12,32 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
-          <li class="nav-item active mr-3">
+{% comment %} Index, About & Linking - 6:58 now what I want to do is handle the highlighting of the link, because right now, if we look if we go on the about page, home is still highlighted. It's still active. And if you're not familiar with Bootstrap, what's causing that is the class of "active" on the "li".  If we move the active to the li of about that will be highlighted. But we want this to be dynamic. If we go to the about page, we want that to be highlighted. This is going to add a little bit of clutter to your template because we have to use conditionals, if you want that functionality, then this is this is how you're going to have to do it. There are there's other ways to do it. There may even be shorter, cleaner ways, but this is just the way that brad does it. 
+
+7:59 So I'm going to cut "class="nav-item active mr-3"" . And this is why I'm actually going to go "enter" to the next line to make sure that the you're inside of the tag and temple tag an if statement. Then we are going to do a "if '/' == request.path", here we are testing the request path, the page. If that's true, I will be pasting in what we cut. then we do an if else statement and paste in the same thing but without the active. {% endcomment %}
+          <li 
+          {% if '/' == request.path  %}
+          class="nav-item active mr-3"
+          {% else %}
+          class="nav-item mr-3"
+          {% endif %}
+          >
 {% comment %} Index, About & Linking - 6:00 Do the same thing for home and change it to temple tags with url index in there  {% endcomment %}
             <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
-{% comment %} Index, About & Linking - 6:07 Same for about but use about instead of index, because thats the name we gave it on urls.py {% endcomment %}
+{% comment %} Index, About & Linking -  9:00 We now need to do the same for about. We paste in the same code but for the conditional we change that up. Since this isnt the homepage its going to be different. We instead use "if 'about' in request.path". 10:31 after checking if everything works, we want to see what else is needed. So a just quick note before we move on. We're building in a real application and I'm building it as if it were a real application. What I would do is have all of the templates created, all the views in the UI before I do anything with the database setting up models, migration's stuff like that, the admin area. I just want to get the front end UI done before we do that. Next what we'll do is create our listings app, we'll create the realtor's app too, at the same time and get that template up. Once we do that, we can start to think about our models and how to set them up. END VIDEO{% endcomment %}
+          <li 
+          {% if 'about' in request.path  %}
+          class="nav-item active mr-3"
+          {% else %}
+          class="nav-item mr-3"
+          {% endif %}
+          >
+{% comment %} Index, About & Linking - 6:07 Same for about but use about instead of index, because thats the name we gave it on urls.py.{% endcomment %}
+            <a class="nav-link" href="{% url 'about' %}">About</a>
           <li class="nav-item mr-3">
-            <a class="nav-link" href="{% static 'about' %}">About</a>
-          </li>
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="listings.html">Featured Listings</a>
+{% comment %} Index, About & Linking - 6:25 now for listing, we have a featured listings, if we try to do the same, we get an error because that doesn't exist, so for now put index. {% endcomment %}
+            <a class="nav-link" href="{% url 'index' %}"">Featured Listings</a>
           </li>
         </ul>
 
