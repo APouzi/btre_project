@@ -39,4 +39,4 @@ class Listing(models.Model):
 def __str__(self):
     return self.title
 
-#Create Listing Model - 13:00 Last thing we need to do, is to take care of the Realtor error we get on line 7 or the very top. To do that we need to import Realtor from realtor app.  we can just access any other app we want by just saying the name of it and then we can get its models by saying realtors.models and then we want to import the name of the model, which is realtor END OF VIDEO.
+#Create Listing Model - 13:00 Last thing we need to do, is to take care of the Realtor error we get on line 7 or the very top. To do that we need to import Realtor from realtor app.  we can just access any other app we want by just saying the name of it and then we can get its models by saying realtors.models and then we want to import the name of the model, which is realtor. We still need to create that in models. END OF VIDEO.
