@@ -68,11 +68,16 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# 1:10 First we want to change "django.db.backends.sqlite3" and for the name, we want to get rid of what was there before and input "BASE_DIR / 'db.sqlite3'"". Then we want to add in the USER, PASSWORD, and HOST in there since its not there already. 
+# 2:10 as far as the messages that say "You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions" we saw this a long time ago when we first started the server for localhost, basically we have some unappointed migrations and immigration is a file that that tells the database what to do basically is as far as setting up tables and data columns and data types of each for each column and stuff like that. And Django has default migrations for things like the admin area for authentication. There's going to be users that have to do with the admin area that that stuff is all set up. Those migration files are set up. They just haven't been run and put into the database. So what we want to do now is, is basically run those migrations. And once we do that, we won't see this error anymore. 3:03 So lets stop the server, Now, to basically to to migrate, we're going to create our own migrations for like the listing's and the realtors and stuff like that, but to run the current migrations that are already ready like those 15 that were in that message, we just want to say "python manage.py migrate". now, if something isn't right with our database, we're going to see an error here. So let's just try it out. 4:04 Now, if you go to pgAdmin then go to severs> dbserver> Datab ases> btredb> Schemas> Tables and you will see all the interesting. This now means that we know postgres is interacting with our application. Also those errors are now gone, because the mirgations have been activated, which means we can create our own models and connect them to our table. END OF VIDEO
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'btredb',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost'
     }
 }
 
