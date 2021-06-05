@@ -131,3 +131,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Media Foilder Settings
+# Media Folder & Adding Data - 40 we need to set some things, so we will put "Media Folder Settings". What we want to define is a MEDIA_ROOT. We want this to be in a root folder called Media. So we want to pass in "BASE_DIR" as first parameter and the folder we want to call it. 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# 1:15 then we want to set our MEDIA_URL to "/media/" just like we did with the static url. (1:37 go to btre/urls.py to change one more thing)
+MEDIA_URL = '/media/'
