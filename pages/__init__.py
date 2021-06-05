@@ -24,3 +24,5 @@
 # Create Listing Model - 00:00 We are going to create a listing model and a realtor model, then we will run a migration based on those models and this will create the tables for those models. :26 This is a Django "https://docs.djangoproject.com/en/3.2/topics/db/models/fields" this is the model field reference. When we setup our fields, we give them certain types. There is a whole bunch. CharField is going to be the most common type for cities, addresses and so on. (1:25 go to the listings/models.py)
 
 # Realtor Model & Run MIgrations - 00:00 - now we need to create our realtor model (00:25 realtor/models.py)
+
+# Create Superuser & Register Models With Admin
