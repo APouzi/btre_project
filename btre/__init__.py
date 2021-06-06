@@ -43,3 +43,6 @@
 
 
 # Media Folder & Adding Data - 00:00 We will be adding data, but before that we have to define some stuff for the media folder where the photos will get uploaded. (:27 go to btre/settings.py file and go to very bottom)
+
+
+# Admin Logo & CSS - 00:00 We are goign to be changing up the logos for the admin area plus some other things. 00:59 what we want to do is create a folder in templates called admin, inside there create a file called "base_site.html". We then extend the admin template, and in there we can change blocks and such. (1:20 go to templates/admin/base_site.html)
