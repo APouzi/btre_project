@@ -35,8 +35,8 @@ class Listing(models.Model):
 # Create Listing Model - 11:05 we also want the publishign date and to get that we have to import the date/time package to get the current date and time. So we input "from datetime import datetime", then put "datetime.now" to get the time of the listing at the time posted, and we also want that to be able to not have a listing date if needed, so blank = True.
     list_date = models.DateTimeField(default=datetime.now, blank=True)
 
-#Create Listing Model - 2:06 As far as fields now with our with our admin area, when we have I mean, I haven't even showed you the admin area because there's we have no models yet to really show you anything. But we're going to have a table that's going to display each listing and we need to pick a field to be kind of the main field to to be displayed. And what I would suggest here is the title to be the main field to display. So to display whatever main field we want to display, we want to do the following:
-def __str__(self):
-    return self.title
+#Create Listing Model - 2:06 As far as fields now with our with our admin area, when we have I mean, I haven't even showed you the admin area because there's we have no models yet to really show you anything. But we're going to have a table that's going to display each listing and we need to pick a field to be kind of the main field to to be displayed. And what I would suggest here is the title to be the main field to display. So to display whatever main field we want to display, we want to do the following(N0TE: make sure this function is inside the class):
+    def __str__(self):
+        return self.title 
 
 #Create Listing Model - 13:00 Last thing we need to do, is to take care of the Realtor error we get on line 7 or the very top. To do that we need to import Realtor from realtor app.  we can just access any other app we want by just saying the name of it and then we can get its models by saying realtors.models and then we want to import the name of the model, which is realtor. We still need to create that in models. END OF VIDEO.

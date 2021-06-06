@@ -8,4 +8,4 @@ urlpatterns = [
     path('', views.index, name = 'index'),
     path('about', views.about, name = 'about')
 ]
-#4:35 now, the issue with this is that we want to have our html "head section" and other html tags. Though we don't want to have to repeat this on every single template. So what we want to do is extend a base layout. So what we're what we'll do is in the templates folder, not inside pages, but just inside templates we'll create a file called "base.html" and then this is going to be just that, our base html that we can extend from other templates. (5:08 go to base.html)
+#Pages Templates & Base Layout - 4:35 now, the issue with this is that we want to have our html "head section" and other html tags. Though we don't want to have to repeat this on every single template. So what we want to do is extend a base layout. So what we're what we'll do is in the templates folder, not inside pages, but just inside templates we'll create a file called "base.html" and then this is going to be just that, our base html that we can extend from other templates. (5:08 go to base.html)
