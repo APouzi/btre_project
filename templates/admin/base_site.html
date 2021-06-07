@@ -1,1 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'admin/base.html' %}
+{% load static %}
+{% comment %} Notice that we are only doing "admin/base.html" and not the usual version. This is because the one in the admin folders are different and in a differnet module when you install django. We then use Jinja and grab the id tags for head and change that to the title we want instead. {% endcomment %}
+{% block branding %}
+<h1 id = 'head'>BTRE Real Estate</h1>
+{% endblock  %}
