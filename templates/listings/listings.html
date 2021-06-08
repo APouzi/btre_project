@@ -95,26 +95,47 @@ No Listings Available. Contact Admin.
 {% endif %}
 
       </div>
-
       <div class="row">
         <div class="col-md-12">
-          <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="#">&laquo;</a>
-            </li>
-            <li class="page-item active">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">&raquo;</a>
-            </li>
-          </ul>
+{% comment %}Pagination, Order & Filter -5:29 lets do an if statement to check to see if there is a next page available. to do that we will add jinja syntax for an if statement asking if our listings has other pages  {% endcomment %}
+          {% if listings.has_other_pages %}
+            <ul class="pagination">
+{% comment %}Pagination, Order & Filter -6:46 here we input new li's that we create because we deleted the old ones. We start with doing an "if" statement asking if we have a previous page.  {% endcomment %}
+              {% if listings.has_previous %}
+{% comment %}Pagination, Order & Filter -7:31 add an li with a class of page-item, they should all have this class the li's. As far as the href goes we want to input "?page=" with the previous page number inside of jinja syntax and then we can use "&laquo;" to give us arrows {% endcomment %}
+                <li class="page-item">
+                  <a href="?page={{listings.previous_page_number}}" class="page-link">&laquo;</a>
+                </li>
+{% comment %}Pagination, Order & Filter -8:37 here we want an else, the previous one was askingif there is a previous item and if so, we output the stuff above. This else is saying that if there isn't, we want to disable the items and show nothing. For this we have an a tage with a class of page link that is going to be a disabled arrow link. .  {% endcomment %}
+              {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link">&laquo;</a>
+                </li>
+              {% endif %}
+{% comment %}Pagination, Order & Filter -10:00 Now we want to take care of all the links. After we input the endif, what we want to do is loop through our "page range" or how many pages we have, in order to go to the page we want to go to. This is how we do the for loop: "for i in listings.paginator.page_range" and page_range being how many pages we have. Below that we will be asking if the pages we are listing, if one of them is active, as in we are looking at them, then we should have it highlighted to know which page we are on, the else statement is just going to output the numbers and not be highlighted BUT they will have a link on them so we can click to those pages and the href is going to have an href of a query of whatever the number is.  {% endcomment %}
+              {% for i in listings.paginator.page_range %}
+                {% if listings.number == i %}
+                  <li class="page-item active">
+                    <a class="page-link">{{i}}</a>
+                  </li>
+                {% else %}
+                  <li class="page-item">
+                    <a href="?page={{i}}" class="page-link">{{i}}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+{% comment %}Pagination, Order & Filter - 13:51 lastly we are going to be adding a forward arrow if there is a next page and we want to be outside of the endfor. For that we are going to be copying the "previous_page_number" one and pasting that into here. Change all "previous" words into "next" words and then change "&laquo;" to "&raquo;" to have arrows face the other way. This has exact same functionality execpt the other way . (16:51 go back to lisitings/views.py) {% endcomment%}
+              {% if listings.has_next %}
+                <li class="page-item">
+                  <a href="?page={{listings.next_page_number}}" class="page-link">&raquo;</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link">&raquo;</a>
+                </li>
+              {% endif %}
+            </ul>
+          {% endif %}
         </div>
       </div>
     </div>
