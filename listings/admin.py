@@ -7,4 +7,19 @@ from .models import Listing
 
 #Create Superuser & Register Models With Admin -  6:22 So I think what I want to do now before we start adding data is also add the realtors in the in the admin area.So to do that, we're going to do the same thing. (6:39 copy the import and one line of code we wrote to paste into realtors/admin)
 
+#Customize Admin Display Data - 00:30 you want to create a class called ListingAdmin and pass in there something called "admin.ModelAdmin". Also we need to pass in "ListingAdmin" into "admin.site.register(Listing)", so it becomes "admin.site.register(Listing, ListingAdmin)"
+class ListingAdmin(admin.ModelAdmin):
+#Customize Admin Display Data -1:00 so we want to define what we want in the table or in he list. For this we do "list_display", inside we want the fields we want shown. Whats's cool is when you do a bool value, it actually shows you checkbox. After this we see that it was a success
+  list_display = ('id', 'title', 'is_published', 'price', 'list_date', 'realtor')
+#Customize Admin Display Data - 2:31 we can't click on the title to get to the articles there, but I can with ID simply because it's the first one. To change that we are going to have the have the links accepted.   
+  list_display_links = ('id', 'title')
+#Customize Admin Display Data - 3:40 We want to add a filter box, make sure to put comma at the end if it's only one value. After this, we get a box at the side of the admin page that allows us to filter by realtor.
+  list_filter = ('realtor',)
+#Customize Admin Display Data - 4:20 Now we want to add in the ability to unpubish ariticles via  the listings page without having to go to every single one of these. We want to set the list_editable to "is_published" 
+  list_editable = ('is_published',)
+#Customize Admin Display Data - Here we can search fields in regards to these fields below   
+  search_fields = ('title', 'description', 'address', 'city', 'state', 'zipcode', 'price')
+#Customize Admin Display Data - Now we want to define the listings per page because it was just going to keep going without pagination.  
+  list_per_page = 25
 admin.site.register(Listing) 
+#Customize Admin Display Data - 7:09 Now that we have done the listings go to realtors/admin.py (7:09 go to realtors/admin.py) 

@@ -46,3 +46,10 @@
 
 
 # Admin Logo & CSS - 00:00 We are goign to be changing up the logos for the admin area plus some other things. 00:59 what we want to do is create a folder in templates called admin, inside there create a file called "base_site.html". We then extend the admin template, and in there we can change blocks and such. (1:20 go to templates/admin/base_site.html to start editing the admin area). 
+
+
+# Customize Admin Display Data - 00:00 We want to make the data displayed to us to be more informational This inlcudes listings. (00:29 go to listings/admin.py)
+
+
+# ----------------------------------Section 7: View Methods, Display & Search-------------------------------------
+# Pull Data From Listings Model - 00:00 Now, what we want to do is to have the models that we created for the databases, to actually be able to display the information that we have in our DB and loaded to the front end. To began doing this, we are going to began with going to the views.py in the listings app. (:56 go to listings/views.py)  

@@ -1,6 +1,12 @@
 {% extends 'admin/base.html' %}
 {% load static %}
-{% comment %} Notice that we are only doing "admin/base.html" and not the usual version. This is because the one in the admin folders are different and in a differnet module when you install django. We then use Jinja and grab the id tags for head and change that to the title we want instead. {% endcomment %}
+{% comment %}Admin Logo & CSS - 1:28 Notice that we are only doing "admin/base.html" and not the usual version. This is because the one in the admin folders are different and in a differnet module when you install django. We then use Jinja with a block called "branding" and grab the id tags for head and change that to the title we want instead. We also want to load in static since we are going to be using images.{% endcomment %}
 {% block branding %}
-<h1 id = 'head'>BTRE Real Estate</h1>
+{% comment %}Admin Logo & CSS - 2:50 Inside here we want to use a logo, so we created an img tag (use emmet abbreviation by doing "img.brand_img"). 2:56 for the source, its going to be static and then "img/logo.png" and for the alt we put the company name, we also give it a width of 80 and a height of 50. After the image, type in "admin area". That is done.{% endcomment %}
+<h1 id = 'head'> <img src="{% static 'img/logo.png' %}" alt="BT Real Estate" class="brand_img" height = '50' width = '80'> Admin Area </h1>
+{% endblock  %}
+
+{% block extrastyle %}
+{% comment %}Admin Logo & CSS - 3:53 For CSS if you wanted to edit that, we add another block. Inside there we add a link, with the href going to a jinja/temple tag static and with a route of 'css/admin.css'. Then go to btre/static/css and create that admin.css file.(5:01 go to btre/static/css/admin.css) {% endcomment %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
 {% endblock  %}
