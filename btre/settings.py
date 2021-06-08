@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+## Display Listings In Template -3:20 Here we will input humanize to allow for commas to be used in listings and possibly other places (3:37 go back to templates/listings/listings.html)
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

@@ -52,4 +52,6 @@
 
 
 # ----------------------------------Section 7: View Methods, Display & Search-------------------------------------
-# Pull Data From Listings Model - 00:00 Now, what we want to do is to have the models that we created for the databases, to actually be able to display the information that we have in our DB and loaded to the front end. To began doing this, we are going to began with going to the views.py in the listings app. (:56 go to listings/views.py)  
+# Pull Data From Listings Model - 00:00 Now, what we want to do is to have the models that we created for the databases, to actually be able to display the information that we have in our DB and loaded to the front end. To began doing this, we are going to began with going to the views.py in the listings app. (00:56 go to templates/listings/views.py)  
+
+# Display Listings In Template - 00:00 As of now, we are outputting static html that isn't dynamic. We need to grab listings from our DB. Whats interesting is that there is six listings, as there are in our DB but there is no dynamic data. (00:36 go to templates/listings/listings.html to replace static variables with dyanmic variables)
