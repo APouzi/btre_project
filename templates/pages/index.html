@@ -2,6 +2,9 @@
 {% comment %}MAKE SURE TO PUT EXTENDS ABOVE COMMENTS. 6:32 Now if we want to use the layout of the base.html we want to use the jinja syntax, this means you want to use the extends keywork in there. (7:00 He goes to the webpage on localhost and shows the html via the devtool (f12)), then he goes to about and shows it's not doing the same because we should extend abouts (7:36 go to about.html) {% endcomment %}
 
 {% comment %}Index, About & Linking - 1:45 We are going to be replacing the "<h1>Home</h1>" that we made earlier in there and copy everything into there. so we have basically just kind of a shell of an application. It's not it's not actually fetching anything or anything like that. It's just basically the HTML placed in a template. Now, as far as the listings here, remember, we're going to be adding the listings from the admin area, which we haven't even talked about yet. So the images will will come from somewhere different. They're not going to come from the static files. OK, so this will look like this for now. So don't worry about that yet. 2:40 Now lets do the same with the home page, so we go back to the theme/dist and go to "about.html"  and get everything below the nav bar to the above the footer. (3:00 got pages/about.html and copy the html from the themes and paste it there){% endcomment %}
+
+{% load humanize %}
+
 {% block content%}
   <section id="showcase">
     <div class="container text-center">
@@ -131,138 +134,68 @@
     <div class="container">
       <h3 class="text-center mb-3">Latest Listings</h3>
       <div class="row">
-        <!-- Listing 1 -->
-        <div class="col-md-6 col-lg-4 mb-4">
+{% comment %}Home & About Page Dynamic Content - 3:15 Now we want to loop through one listing like we did with the other listings.html page. First we want to check to see if there any listings,   {% endcomment %}   
+      {% if listings %}
+{% comment %}Home & About Page Dynamic Content - 4:12 If there are listings, we want to loop through them, so we create a for loop tag that loops a listing in listings. Inside the tag we want to make sure that we have a listing in there and we delete the other listings {% endcomment %}
+      {% for listing in listings %}
+              <div class="col-md-6 col-lg-4 mb-4">
           <div class="card listing-preview">
-            <img class="card-img-top" src="assets/img/homes/home-1.jpg" alt="">
+{% comment %}Home & About Page Dynamic Content - 5:29 lets began to change this over to dynamic content. We will start with the main image. It's going to be listing.photo_main.url {% endcomment %}          
+            <img class="card-img-top" src="{{listing.photo_main.url}}" alt="">
             <div class="card-img-overlay">
               <h2>
-                <span class="badge badge-secondary text-white">$490,000</span>
+{% comment %}Home & About Page Dynamic Content - 6:05 We want to use humanize here also, which is going to take care of the comma for us. So we are going to import that by saying "load humanize" with the jinja syntax at the top. After doing that we can put in the dynamic variable and don't forget to pipe in the humamize "intcomma" {% endcomment %}
+                <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
               </h2>
             </div>
             <div class="card-body">
               <div class="listing-heading text-center">
-                <h4 class="text-primary">45 Drivewood Circle</h4>
+{% comment %}Home & About Page Dynamic Content - 6:48 lets do the title {% endcomment %}
+                <h4 class="text-primary">{{ listing.title }}</h4>
                 <p>
-                  <i class="fas fa-map-marker text-secondary"></i> Norwood MA, 02062</p>
+{% comment %}Home & About Page Dynamic Content -7:10 We then want to do the address {% endcomment %}
+                  <i class="fas fa-map-marker text-secondary"></i> {{listing.city}} {{listing.state}}, {{listing.zipcode}}</p>
               </div>
               <hr>
               <div class="row py-2 text-secondary">
                 <div class="col-6">
-                  <i class="fas fa-th-large"></i> Sqft: 2500</div>
+{% comment %}Home & About Page Dynamic Content - 7:34 sqft, garage, bedroom, bathrooms, realtor thats connected to listing, list date and humanized. {% endcomment %}
+                  <i class="fas fa-th-large"></i> Sqft: {{ listing.sqft }}</div>
                 <div class="col-6">
-                  <i class="fas fa-car"></i> Garage: 2</div>
+                  <i class="fas fa-car"></i> Garage: {{ listing.garage }}</div>
               </div>
               <div class="row py-2 text-secondary">
                 <div class="col-6">
-                  <i class="fas fa-bed"></i> Bedrooms: 3</div>
+                  <i class="fas fa-bed"></i> Bedrooms: {{ listing.bedroom }}</div>
                 <div class="col-6">
-                  <i class="fas fa-bath"></i> Bathrooms: 2</div>
+                  <i class="fas fa-bath"></i> Bathrooms: {{ listing.bathroom }}</div>
               </div>
               <hr>
               <div class="row py-2 text-secondary">
                 <div class="col-6">
-                  <i class="fas fa-user"></i> Kyle Brown</div>
+                  <i class="fas fa-user"></i> {{ listing.realtor }}</div>
               </div>
               <div class="row text-secondary pb-2">
                 <div class="col-6">
-                  <i class="fas fa-clock"></i> 5 days ago</div>
+                  <i class="fas fa-clock"></i> {{ listing.list_date | timesince }}</div>
               </div>
               <hr>
-              <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
+{% comment %}Home & About Page Dynamic Content - 8:51 Remember for this href, we want to use the url temple tag, pass in listing AND the id that we want in there. (9:52 go to pages/views.py) {% endcomment %}
+              <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
             </div>
           </div>
         </div>
-
-        <!-- Listing 2 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card listing-preview">
-            <img class="card-img-top" src="assets/img/homes/home-2.jpg" alt="">
-            <div class="card-img-overlay">
-              <h2>
-                <span class="badge badge-secondary text-white">$550,000</span>
-              </h2>
-            </div>
-            <div class="card-body">
-              <div class="listing-heading text-center">
-                <h4 class="text-primary">18 Jefferson Lane</h4>
-                <p>
-                  <i class="fas fa-map-marker text-secondary"></i> Woburn MA, 01801</p>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-th-large"></i> Sqft: 3200</div>
-                <div class="col-6">
-                  <i class="fas fa-car"></i> Garage: 1</div>
-              </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-bed"></i> Bedrooms: 4</div>
-                <div class="col-6">
-                  <i class="fas fa-bath"></i> Bathrooms: 2.5</div>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-user"></i> Mark Hudson</div>
-              </div>
-              <div class="row text-secondary pb-2">
-                <div class="col-6">
-                  <i class="fas fa-clock"></i> 5 days ago</div>
-              </div>
-              <hr>
-              <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-            </div>
+      {% endfor %}
+{% comment %}Home & About Page Dynamic Content -3:30 so we will put an if and else tag. In the else tag or if there are no listings we put a col-md-12 tag.  {% endcomment %}
+      {% else %}
+          <div class="col-md-12">
+            <p>No Listings Available</p>
           </div>
-        </div>
-
-        <!-- Listing 3 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card listing-preview">
-            <img class="card-img-top" src="assets/img/homes/home-3.jpg" alt="">
-            <div class="card-img-overlay">
-              <h2>
-                <span class="badge badge-secondary text-white">$580,000</span>
-              </h2>
-            </div>
-            <div class="card-body">
-              <div class="listing-heading text-center">
-                <h4 class="text-primary">187 Woodrow Street</h4>
-                <p>
-                  <i class="fas fa-map-marker text-secondary"></i> Salem MA, 01915</p>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-th-large"></i> Sqft: 3107</div>
-                <div class="col-6">
-                  <i class="fas fa-car"></i> Garage: 0</div>
-              </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-bed"></i> Bedrooms: 4</div>
-                <div class="col-6">
-                  <i class="fas fa-bath"></i> Bathrooms: 3</div>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-user"></i> Mark Hudson</div>
-              </div>
-              <div class="row text-secondary pb-2">
-                <div class="col-6">
-                  <i class="fas fa-clock"></i> 5 days ago</div>
-              </div>
-              <hr>
-              <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-            </div>
-          </div>
-        </div>
-
+      {% endif %}   
       </div>
     </div>
   </section>
+ 
 
   <section id="services" class="py-5 bg-secondary text-white">
     <div class="container">

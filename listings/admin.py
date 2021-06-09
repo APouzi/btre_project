@@ -21,5 +21,6 @@ class ListingAdmin(admin.ModelAdmin):
   search_fields = ('title', 'description', 'address', 'city', 'state', 'zipcode', 'price')
 #Customize Admin Display Data - Now we want to define the listings per page because it was just going to keep going without pagination.  
   list_per_page = 25
-admin.site.register(Listing) 
+#Customize Admin Display Data - 00:55 Since we just made the ListingAdmin class we need to pass that into the the "admin.site.register(Listing)" as a 2nd parameter so we can actually use it. 
+admin.site.register(Listing, ListingAdmin) 
 #Customize Admin Display Data - 7:09 Now that we have done the listings go to realtors/admin.py (7:09 go to realtors/admin.py) 
