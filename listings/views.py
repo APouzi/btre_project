@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from typing import List
+from django.shortcuts import get_object_or_404, render
 #Pagination, Order & Filter - 3:24 this is where we are going to be importing a couple of things aside from the paginator itself.  
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 # from .choices import price_choices, bedroom_choices, state_choices
@@ -36,9 +37,15 @@ def index(request):
   return render(request, 'listings/listings.html', context)
 
 
-
+#Single Listing Page - 2:49 Here we want to start making our single listings into dynamic pages. To do this, we need to reach into the model and grab that particular data. Since we already brought in the listing method to the file, we want to start a variable called listing. Instead of getting the object the usual way, we are going to be using get_object_or_404(). This will essentially show a 404 page if nothing is retrieved. 3:31 We want to pass in the model and also the primary key to listing_id, this primary_key is passed in through the listing function itself and that is passed into the get_object_or_404 function. Though that one actually comes from the urls.py in listing . Then set up the context dictionary to pass through the return of the render. Make sure to import in the get_object_or_404 from django.shortcuts. 5:05 Now that is done, we should be able to access the listing data within the template because we passed it in with the return that includes "listings/listing.html". (5:21 go to listing.html)
 def listing(request, listing_id):
-  return render(request, 'listings/listing.html')
+
+  listing = get_object_or_404(Listing, pk = listing_id)
+  context = {
+    'listing' : listing
+  }
+
+  return render(request, 'listings/listing.html', context)
 
 
 

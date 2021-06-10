@@ -59,3 +59,5 @@
 # Pagination, Order & Filter - 00:00 Brad talks about pylinting issue that is something very minor and doesn't bother me, since these lessons are somewhat older. 1:00 he goes to paginator documentation https://docs.djangoproject.com/en/3.2/topics/pagination/. 1:10 You want to go down to paginator in a view. We want to add paginator, we pass in our listings and how many per page we want to use, you then you want to get the request for the page number you are on to keep track "request.GET.get('page')" and then we pass that into a variable that would hold "paginator.get_page(page)" (1:42 go to listings/view.py )
 
 # Home & About Page Dynamic Content - 00:00 we need to take care of the realtors having dynamic view in the home page, along with other dynamic information we need to set up. (:53 go to pages/views.py)
+
+# Single Listing Page - 00:00 (open up listings/views.py and then open and go to template/listings/listing.html)
