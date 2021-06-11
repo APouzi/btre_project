@@ -1,6 +1,9 @@
 from listings.views import listing
 from django.shortcuts import render
 from django.http import HttpResponse
+#Search From Choices - 2:05 since its from listings.py we want to do "listings.choices"
+#Search From Choices - 9:59 copy and paste the imports from listings.choices that we had in the pages/views.py
+from listings.choices import price_choices, bedroom_choices, state_choices
 #Creating the Pages & Base Layout - 6:25 Lets create the function for the urls.py, after that import HttpResponse from the django http package. For now we ware just going to be using HttpResponse for example. @7:40 This isn't going to work because we still need to take the urls.py file and go to the other urls.py file and make some changes there (8:10 Go to urls.py in BTRE)
 
 #Home & About Page Dynamic Content - 00:59 Right now it's very simple and also open up templates/pages/index.html. We are going to do the same exact thing we did with the listings page but no listings and just three listings. Even though we are inside the pages app, we can get any model we want. So that means we should bring in the listings model because that is where the DB data is. So we should importa that.
@@ -14,7 +17,11 @@ def index(request):
     listings = Listing.objects.order_by('-list_date').filter(is_published = True)[:3]
 #Home & About Page Dynamic Content - 2:33 we then have to create a context variable, like the listings view.py. 2:55 now we're passing it into the index.html, we just need to receive it and loop through them and display the dynamic data just like we did with the listings,.html file. (3:10 go to templates/pages/index.html )
     context = {
-        'listings' : listings
+        'listings': listings,
+        'state_choices': state_choices,
+        'bedroom_choices': bedroom_choices,
+        'price_choices': price_choices
+#Search From Choices - 2:24 we want to bring these imports into the context dictionary so we an pass them off in the return ()
     }
     return render(request, 'pages/index.html', context)
 

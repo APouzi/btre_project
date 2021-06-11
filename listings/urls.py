@@ -9,3 +9,4 @@ urlpatterns = [
 #Listings URLs & Template - 3:49 the last url, is going to be one for the search, And the reason we're not putting in listings/search here is because we're actually going to link this to the main btre/urls.py, and tell it that anything that has listings/ should look at this file, we will have some errors because we haven't created these methods yet (4:24 go to btre/urls.py)
     path('search', views.search, name="search") 
 ]
+#Search From Choices - 6:42 You may have forgot where that search is from, if you go to pages/urls.py and you see that a path is "Search"  and its 2nd parameter is going to be 'views.search' which will essentially activate the search method in pages/views.py (6:46 go to listings/views.py to update this function)

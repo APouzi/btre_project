@@ -61,3 +61,5 @@
 # Home & About Page Dynamic Content - 00:00 we need to take care of the realtors having dynamic view in the home page, along with other dynamic information we need to set up. (:53 go to pages/views.py)
 
 # Single Listing Page - 00:00 (open up listings/views.py and then open and go to template/listings/listing.html)
+
+# Search From Choices - 00:00 we want to shore up all the choices and make them mean something to Django. To do that we need to create a file called choices.py in Listings (00:52 go to the newly created listings/choices.py). 
