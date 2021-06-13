@@ -2,7 +2,7 @@ from typing import List
 from django.shortcuts import get_object_or_404, render
 #Pagination, Order & Filter - 3:24 this is where we are going to be importing a couple of things aside from the paginator itself.  
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-# Listings URLS & Templates - 6:03 we create a index method and that is going to be the main listings page. What he is going by is the urls.py so create three methods in total for listings, listing, and search.  (7:11 for each html in listing, put in an h1 for placeholders, then check on server to see if okay) 10:10 Extend the base to the layouts(10:14 go to listings, listing and search, extend the base.html and input block content temple tags). 11:14 Now we are going to get the static stuff for listings, so we go to notepad++ and go to theme/dist to go and get the html. Below navbar and above footer. Copy and paste into each of the files.  (12:48 go to listings.html) 
+#Listings URLS & Templates - 6:03 we create a index method and that is going to be the main listings page. What he is going by is the urls.py so create three methods in total for listings, listing, and search.  (7:11 for each html in listing, put in an h1 for placeholders, then check on server to see if okay) 10:10 Extend the base to the layouts(10:14 go to listings, listing and search, extend the base.html and input block content temple tags). 11:14 Now we are going to get the static stuff for listings, so we go to notepad++ and go to theme/dist to go and get the html. Below navbar and above footer. Copy and paste into each of the files.  (12:48 go to listings.html) 
 from listings.choices import price_choices, bedroom_choices, state_choices 
 #Search From Choices -  10:00 We want import the same dictionaries from choices in listings just like we did in pages/views.py and but unlike there we take off "listings" from "listings.choices".
 
@@ -51,13 +51,15 @@ def listing(request, listing_id):
 
 
 def search(request):
-  # queryset_list = Listing.objects.order_by('-list_date')
-
+#Search Form Filtering - 00:55 We are going to start, at the top, a queryset_list as brad calls it. This one alone is just going to get all the listings. Now we need to add filters to the search. 1:45 The first thing we need to get done, is update the context dictionary and pass in the listings as a queryset_list. 
+  queryset_list = Listing.objects.order_by('-list_date')
+#Search Form Filtering - 4:29 We first start with commenting all the fields that we want to filter, 
   # # Keywords
-  # if 'keywords' in request.GET:
-  #   keywords = request.GET['keywords']
-  #   if keywords:
-  #     queryset_list = queryset_list.filter(description__icontains=keywords)
+#Search Form Filtering - 4:45 when you make a request with this form, it's a get request and you can actually test to see if it exists. 4:53 if it does, we want to do a "keywords = request.GET['keywords']", then we want to do another if statement "if keywords" the reason we want to do that, is to check that if it is an empty string, if this succeeds we want to set another filter on it that asks if the keywords are contained in the descrption field, in our model. 6:01 If we do something that isn't an exact match, more like an actual search within something that is a pool of words like a description. We want to put an DOUBLE underscore "__" and then we do an "icontains"
+  if 'keywords' in request.GET:
+    keywords = request.GET['keywords']
+    if keywords:
+      queryset_list = queryset_list.filter(description__icontains=keywords)
 
   # # City
   # if 'city' in request.GET:
@@ -89,11 +91,12 @@ def search(request):
     'state_choices': state_choices,
     'bedroom_choices': bedroom_choices,
     'price_choices': price_choices,
-    # 'listings': queryset_list,
+#Search Form Filtering - 1:45 pass in listings as queryset_list, 2:06 so now lets just make the template load the unfiltered queryset_list to do this we need to copy what we have in listings.html into search html (2:18 go to templates/listings/listings.html)
+    'listings': queryset_list,
     # 'values': request.GET
   }
 
 
   
-  #Search From Choices - 6:40 if we submit and you see that what happens here is the return is just "listings/search.html" which returns a simple template. 7:00 If we were to put values in search fields, we actually see those values inside the url bar. 7:17 lets add the markup to the search page, get that from the btre_resources with the notepad++ editor, copy only contents needed, not tamplates. (go to templates/listings/search.html)
+#Search From Choices - 6:40 if we submit and you see that what happens here is the return is just "listings/search.html" which returns a simple template. 7:00 If we were to put values in search fields, we actually see those values inside the url bar. 7:17 lets add the markup to the search page, get that from the btre_resources with the notepad++ editor, copy only contents needed, not tamplates. (go to templates/listings/search.html)
   return render(request, 'listings/search.html', context)

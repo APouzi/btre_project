@@ -63,3 +63,5 @@
 # Single Listing Page - 00:00 (open up listings/views.py and then open and go to template/listings/listing.html)
 
 # Search From Choices - 00:00 we want to shore up all the choices and make them mean something to Django. To do that we need to create a file called choices.py in Listings (00:52 go to the newly created listings/choices.py). 
+
+# Search Form Filtering - 00:00 It is time to actually bring functionallity to these (00:50 go to listings/views.py)
