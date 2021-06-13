@@ -55,35 +55,44 @@ def search(request):
   queryset_list = Listing.objects.order_by('-list_date')
 #Search Form Filtering - 4:29 We first start with commenting all the fields that we want to filter, 
   # # Keywords
-#Search Form Filtering - 4:45 when you make a request with this form, it's a get request and you can actually test to see if it exists. 4:53 if it does, we want to do a "keywords = request.GET['keywords']", then we want to do another if statement "if keywords" the reason we want to do that, is to check that if it is an empty string, if this succeeds we want to set another filter on it that asks if the keywords are contained in the descrption field, in our model. 6:01 If we do something that isn't an exact match, more like an actual search within something that is a pool of words like a description. We want to put an DOUBLE underscore "__" and then we do an "icontains"
+#Search Form Filtering - 4:45 when you make a request with this form, it's a get request and you can actually test to see if it exists. 4:53 if it does, we want to do a "keywords = request.GET['keywords']", then we want to do another if statement "if keywords" the reason we want to do that, is to check that if it is an empty string, if this succeeds we want to set another filter on it that asks if the keywords are contained in the descrption field, in our model. 
+#Search Form Filtering - 6:01 If we do something that isn't an exact match, more like an actual search within something that is a pool of words like a description. We want to put an DOUBLE underscore "__" and then we do an "icontains", because we are seeing if this word contains that keyword, the "i" is so we dont want to worry about being case sensitive, otherwise we would remove this. 6:40 he tests it, so when we input our keywords, it actually works. 
   if 'keywords' in request.GET:
     keywords = request.GET['keywords']
     if keywords:
       queryset_list = queryset_list.filter(description__icontains=keywords)
 
-  # # City
-  # if 'city' in request.GET:
-  #   city = request.GET['city']
-  #   if city:
-  #     queryset_list = queryset_list.filter(city__iexact=city)
 
-  # # State
-  # if 'state' in request.GET:
-  #   state = request.GET['state']
-  #   if state:
-  #     queryset_list = queryset_list.filter(state__iexact=state)
+#Search Form Filtering - 10:04 We are going to be using __iexact because we want the exact name. Now, remember to put "i" in front of exact because we don't want to care about being case sensitive.
+  # City
+  if 'city' in request.GET:
+    city = request.GET['city']
+    if city:
+      queryset_list = queryset_list.filter(city__iexact=city)
 
-  # # Bedrooms
-  # if 'bedrooms' in request.GET:
-  #   bedrooms = request.GET['bedrooms']
-  #   if bedrooms:
-  #     queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
 
-  # # Price
-  # if 'price' in request.GET:
-  #   price = request.GET['price']
-  #   if price:
-  #     queryset_list = queryset_list.filter(price__lte=price)
+#Search Form Filtering - 11:02 next thing we want is the state. He used a helpful tip with "ctrl + d" to select similar words. 11:50 He tries out to see if this works, this also works putting these together!
+  # State
+  if 'state' in request.GET:
+    state = request.GET['state']
+    if state:
+      queryset_list = queryset_list.filter(state__iexact=state)
+
+
+#Search Form Filtering - 12:49 We are not going to be doing exact, like the others. You could use exact, but we want everything up to room selected. We use lte or "less than equalto" 
+  # Bedrooms
+  if 'bedrooms' in request.GET:
+    bedrooms = request.GET['bedrooms']
+    if bedrooms:
+      queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
+
+
+#Search Form Filtering - 14:40 We are going to do the same exact thing for price. After this, he goes and tests some stuff and sees if it works. He also troubleshoots some stuff but nothing that actually matters. **16:40 After this he explains taht when you are doing a "get" we are doing a form field of "name =" which is what the backend looks for in the front end! So if you don't have that name attribute, it is not going to know what you are talking about END OF VIDEO
+  # Price
+  if 'price' in request.GET:
+    price = request.GET['price']
+    if price:
+      queryset_list = queryset_list.filter(price__lte=price)
 
 
 #Search From Choices - 10:20 We are also going to be using the choices that we are importing just like we did in the views.py.  dont forget to pass in the context into the return. (10:50 go to template/listings/search.html)
@@ -93,7 +102,8 @@ def search(request):
     'price_choices': price_choices,
 #Search Form Filtering - 1:45 pass in listings as queryset_list, 2:06 so now lets just make the template load the unfiltered queryset_list to do this we need to copy what we have in listings.html into search html (2:18 go to templates/listings/listings.html)
     'listings': queryset_list,
-    # 'values': request.GET
+    #FIND WHERE HE TALKS ABOUT THIS!!! MISSED IT!!! Search Form Choices?
+    'values': request.GET
   }
 
 

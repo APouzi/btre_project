@@ -20,7 +20,7 @@ def index(request):
         'listings': listings,
         'state_choices': state_choices,
         'bedroom_choices': bedroom_choices,
-        'price_choices': price_choices
+        'price_choices': price_choices,
 #Search From Choices - 2:24 we want to bring these imports into the context dictionary so we an pass them off in the return ()
     }
     return render(request, 'pages/index.html', context)

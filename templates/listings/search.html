@@ -8,7 +8,8 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <form action="search.html">
+{% comment %} Dont forget to set the form to url and have the route to search, which was set in listings/urls.py! {% endcomment %}
+          <form action="{% url 'search' %}">
             <!-- Form Row 1 -->
             <div class="form-row">
               <div class="col-md-4 mb-3">
