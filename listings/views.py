@@ -102,7 +102,7 @@ def search(request):
     'price_choices': price_choices,
 #Search Form Filtering - 1:45 pass in listings as queryset_list, 2:06 so now lets just make the template load the unfiltered queryset_list to do this we need to copy what we have in listings.html into search html (2:18 go to templates/listings/listings.html)
     'listings': queryset_list,
-    #FIND WHERE HE TALKS ABOUT THIS!!! MISSED IT!!! Search Form Choices?
+#Preserving Form Input - 00:30 Here we want to post, 'values': request.GET, so if we search something in keywords, then we should have something available for us as values in keywords. (00:54 go to template/listings/search.html)
     'values': request.GET
   }
 

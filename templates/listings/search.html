@@ -14,20 +14,21 @@
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label class="sr-only">Keywords</label>
-                <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)">
+{% comment %}Preserving Form Input - 1:05 here we want to add a value attribute. 1:20 now if you go to homepage and try that out, you can search on homepage and then that search will be available in the next page. Remember, its whatever the "name =" is going to be, thats what we use for values.{% endcomment %}
+                <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)" value = "{{values.keywords}}" >
               </div>
-
+{% comment %}Preserving Form Input - 1:38 same for city {% endcomment %}
               <div class="col-md-4 mb-3">
                 <label class="sr-only">City</label>
-                <input type="text" name="city" class="form-control" placeholder="City">
+                <input type="text" name="city" class="form-control" placeholder="City" value = "{{values.city}}">
               </div>
-
+{% comment %}Preserving Form Input -1:57 For the selection list, its goint to be alittle different, we need to do a conditional asking if the key is the same as the search that is being inputted in and this is because we are looping through the list and we are asking which one did we use. Notice that the if statement is in the tag itself and also that we use "selected". do the same exact thing for the rest, remember to assign them what the "name=" because thats how django communicates with the front end. END OF VIDEO{% endcomment %}
               <div class="col-md-4 mb-3">
                 <label class="sr-only">State</label>
                 <select name="state" class="form-control">
                   <option selected="true" disabled="disabled">State (All)</option>
                   {% for key, state in state_choices.items %}
-                      <option value="{{ key }}">{{ state }}</option>
+                      <option value="{{ key }}" {% if key == values.state %} selected {% endif %}> {{ state }} </option>
                     {% endfor %}
                 </select>
               </div>
@@ -39,7 +40,7 @@
                 <select name="bedrooms" class="form-control">
                   <option selected="true" disabled="disabled">Bedrooms (Any)</option>
                   {% for key, room in bedroom_choices.items %}
-                      <option value="{{ key }}">{{ room }}</option>
+                      <option value="{{ key }}" {% if key == values.bedrooms %} selected {% endif %}>{{ room }}</option>
                     {% endfor %}
                 </select>
               </div>
@@ -47,7 +48,7 @@
                 <select name="price" class="form-control">
                   <option selected="true" disabled="disabled">Max Price (All)</option>
                   {% for key, price in price_choices.items %}
-                      <option value="{{ key }}">{{ price }}</option>
+                      <option value="{{ key }}" {% if key == values.price %} selected {% endif %}>{{ price }}</option>
                     {% endfor %}
                 </select>
               </div>

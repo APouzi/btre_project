@@ -65,3 +65,5 @@
 # Search From Choices - 00:00 we want to shore up all the choices and make them mean something to Django. To do that we need to create a file called choices.py in Listings (00:52 go to the newly created listings/choices.py). 
 
 # Search Form Filtering - 00:00 It is time to actually bring functionallity to these (00:50 go to listings/views.py)
+
+# Preserving Form Input - 00:00 When we search something, we want it to stay in the form. Lets make this happen. (00:20 go to listings/views.py)
