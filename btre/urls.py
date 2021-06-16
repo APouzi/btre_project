@@ -8,6 +8,8 @@ urlpatterns = [
     path('', include('pages.urls')),
 #Listings URLs & Template - 4:34 We want to do the same thing we did with pages.urls. (5:03 now we need to go to our settings.py to get our app inputted)
     path('listings/', include('listings.urls')),
+#Accounts App & URLs - 9:44 we can copy and paste into here the new path we have made from accounts/urls.py, which this connects the main one. 10:00 after testing out if it works, we want the make the navigation go to the correct places. So that means we have to go to tempaltes and go to the partials folder. (10:10 go to templates/partials/_navbar and scroll down to navigation links for logging in and such)
+    path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

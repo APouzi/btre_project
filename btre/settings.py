@@ -24,6 +24,8 @@ INSTALLED_APPS = [
 #Listings URLS & Templates - 5:36 Here we will be adding the listings and realtors definitions for the installed apps. 5:44 now we need to create our views methods that we had in our listings/urls.py (5:55 go to listings/views.py to create methods). Note we cannot do a "python manage.py startapp realtors" or whatever app if we already inputted the defition of it in here.
     'listings.apps.ListingsConfig',
     'realtors.apps.RealtorsConfig',
+#Accounts App & URLs - 5:12 right below the realtors, we want to include the accounts app into installed apps. (5:29 go to accounts/urls.py)
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

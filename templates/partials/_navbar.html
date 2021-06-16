@@ -46,14 +46,26 @@
             <a class="nav-link" href="{% url 'listings' %}"">Featured Listings</a>
           </li>
         </ul>
-
+{% comment %}Accounts App & URLs - 10:20 we want to be removing the href and inputting a url temple tag, you also want to do the same thing for login. This will allow the navbar navigation links. 11:34 we want to add conditional temple tags here to make sure django knows when to activate or highlight certain things if you are on a certain page. So we want to check if 'register' is in the request.path or current page cariable the we can activate the highlight. Do the same for login END OF VIDEO{% endcomment %}
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="register.html">
+          <li 
+          {% if 'register' in request.path %}
+            class="nav-item active mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+            <a class="nav-link" href="{% url 'register' %}">
               <i class="fas fa-user-plus"></i> Register</a>
           </li>
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="login.html">
+          <li 
+          {% if 'login' in request.path %}
+            class="nav-item active mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+            <a class="nav-link" href="{% url 'login' %}">
               <i class="fas fa-sign-in-alt"></i>
 
               Login</a>
