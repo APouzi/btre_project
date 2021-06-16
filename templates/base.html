@@ -22,7 +22,7 @@
 {% include 'partials/_navbar.html' %}
 {% comment %}Bootstrap Layout Markup - 12:13 the logo is a static asset. So we're going to go to our NAV bar. Partial because that's where the logo is, you can see we still have it pointing to like assets, so we want to change that. Now, remember, if we're going to be using static, we need to up at the top, we need to load static. (12:24 go to _navbar.html) {% endcomment %}
 
-{% comment %}Pages Templates & Base Layout - 5:43 To extend layout, we will be using the jinja syntax that django uses by default, input "block content" then end it with an endblock, like flask (6:25 go to index.html) {% endcomment %}
+{% comment %}Pages Templates & Base Layout - 5:43 To extend layout, we will be using the jinja syntax that django uses by default, input "block content" then end it with an endblock, like flask. The name content is going to be used to point to these jinja syntax! (6:25 go to index.html) {% endcomment %}
     {% block content %} {% endblock %}
 
 {% include 'partials/_footer.html' %}

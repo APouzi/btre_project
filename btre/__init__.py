@@ -70,4 +70,7 @@
 
 
 # ----------------------------------Section 9: Accounts & Authentication--------------------------------------------
+
 # Accounts App & URLs - 00:00 We are now going to start on account functionality. To start on this, we need to create a new app, an account app. "python manage.py startapp accounts". Then we have an accounts folder that is started. Now, Django already has a user system in place. Which means that we don't have to create accounts or user model, we can just use the user table that is already in place. 2:18 if you go to pgAdmin and go to Servers/dbserver/databases/btredb/Schemas/public/tables and there is a table within there called "auth_user". 3:00 He goes tyhrough the fields that they automatically created and even "is_staff" is there, which is there to allow them to log into the back end or not.  The first step is to start creating the routes for the registration and login. First we want to create a folder in templates called accounts. Inside accounts we want to have a couple of files created, login.html, register.html and dashboard.html which will be part of accounts  (4:25 go to templates/accounts and input h1s to every single file in there.) after this we want to setup our routes. So go to accounts and create a file called "urls.py", since you have to make this file for Django (5:05 go to btre/settings.py).
+
+# Register & Login Templates - 00:00 we are going to create the templates for login and register. (00:25 open and go to templates/accounts/login.html && templates/accounts/register.html )
