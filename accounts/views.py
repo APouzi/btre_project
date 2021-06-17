@@ -58,10 +58,20 @@ def register(request):
  
 def login(request):
     if request.method == 'POST':
-        # logic
-        # print("POST")
-        # return redirect('register')
-        return
+#User Login - 00:36 just like above, except simplier, we need to get the username and password. 
+        username = request.POST['username']
+        password = request.POST['password']
+#User Login - 1:04 now to authenticate we want to create a variable, called user that has the username and password passed in and are passed in as the variables we just created. Then we want to check if the user actually exists by seeing if the user is "not none", if it's true, it means the user is found in the DB and the password is correct. We want to login if true "auth.login(request, user)", have a success message and then redirect to the dashboard, that we will create later video.
+        user = auth.authenticate(username = username,password = password)
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'you are logged in')
+            return redirect('dashboard')
+#User Login - 3:06 An else statement in case the authentication fails.  We test this and we get redirected to dash. 3:50 If we try to go back to admin, we are going to be logged out, which means that we get logged out as the admins. That is because this is all part of the same table. END OF TABLE
+        else:
+            messages.error(request, 'Invalid Password/Username')
+            return redirect('login')
+
     else:
         return render(request, 'accounts/login.html')
 
