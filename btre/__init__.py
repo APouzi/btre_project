@@ -76,3 +76,5 @@
 # Register & Login Templates - 00:00 we are going to create the templates for login and register. (00:25 open and go to templates/accounts/login.html && templates/accounts/register.html )
 
 # Message Alerts - 00:00 We are going to be inputting messages into our program to let users know when they have been logged in or something went wrong. Here is the documentation Brad looks over: https://docs.djangoproject.com/en/3.2/ref/contrib/messages/. Essentially, in order to add them, we need to add some message tags to our settings, copy the lines from the documentation at :55 and paste that in btre/settings.py. (1:05 go to btre/settings.py and go to the bottom)
+
+# User Registration - 00:00 We are going to work on validationa and registration. (00:10 go to accounts/views.py)
