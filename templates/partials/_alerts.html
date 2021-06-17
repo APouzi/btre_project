@@ -1,0 +1,20 @@
+{% comment %}Message Alerts - 2:58 now we are going to be styling the bootstrap message in how we want, if we werent using bootstrap we can use whatever we want. 3:00 Now we just want to test out if messages work with an if temple tag, asking if there are messages. inside the if statement, we are going to have a for loop, looping through the messages. Inside there we are going to have a div with an id of message class of container. With bootstrap, the alert is usually going to be "alert alert-danger" but here we are going to replace the tag of "danger" with a temple tag of "message.tag" and we want this tag to be dismissable, so we put a "alert-dismissible" and inside the div tag we need a button of close. and we want to assign the role for this, since it's bootstrap and have the role be alert.  {% endcomment %}
+
+{% if messages %}
+    {% for message in messages %}
+    <div id="message" class="container">
+    <div class="alert alert-{{ message.tags }} alert-dismissible text-center" role = "alert">
+    <button type = "button" class = "close" data-dismiss ="alert"><span aria-hidden = "true" >&times; </span> </button>
+{% comment %}Message Alerts - 6:03 Here we are going to be putting a snippet  of code that we can use for our error outputs. This is a normal way of mesage output. (7:40 go to accounts/views.py) {% endcomment %}
+     <strong>
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            Error: 
+          {% else %}
+            {{ message.tags|title }}
+          {% endif %}
+        </strong>
+        {{ message }}
+    </div>
+    </div>
+    {% endfor %}
+{% endif %}

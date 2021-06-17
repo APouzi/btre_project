@@ -142,3 +142,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #Media Folder & Adding Data 1:15 then we want to set our MEDIA_URL to "/media/" just like we did with the static url. (1:37 go to btre/urls.py to change one more thing)
 MEDIA_URL = '/media/'
+
+#Message Alerts - 1:10 this is where we are going to be importing our messages. but we do get rid of the message tag, which is going to be the  "50: 'critical',".1:41 What we do want to do is adapt the alert for bootstrap, so instead of the "5-:critcal" we will put " messages.ERROR: 'danger'". We are actually going to be creating a seperate partial in the template folder for alerts, so we can customize them. 2:29 lets create a file in templates/partials and call it "_alerts/html", call it whatevr you want but yeah. (2:40 go to templates/partials/_alerts.html)
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}

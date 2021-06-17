@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 #Accounts App & URLs - 7:00 now we ware going to be creating register method, we want to pass in the request. inside the method we want to have a return, that is passed in with the request, the template name, 
 def register(request):
@@ -7,7 +8,9 @@ def register(request):
         # logic
         # print("POST")
         # return redirect('register')
-        return
+        messages.error(request, 'Testing error message')
+#7:59 we are going to be testing if messages are going to be working. To do this we are going to be doing a redirect to register, same page. To output a message, right above it, we are going to input what our message is going to be "messages.error(request, 'Testing error message')" First parameter is the httprequest and the 2nd is going to be the message. 9:00 This message is not going to show up because our partial isn't inserted into the register template. (9:32 go to accounts/register.html)
+        return redirect('register')
     else:
         return render(request, 'accounts/register.html')
  

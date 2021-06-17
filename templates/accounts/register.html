@@ -13,6 +13,10 @@
                     <i class="fas fa-user-plus"></i> Register</h4>
                 </div>
                 <div class="card-body">
+{% comment %}Message Alerts - 9:41 Here we are going to be inserting the alert under the card body div. Copy and paste this into the log in. (10:07 copy and paste this into templates/accounts/login.html) {% endcomment %}
+                {% include 'partials/_alerts.html' %}
+
+
 {% comment %}Register & Login Templates - 4:23 go to input the csrf_token temple tag into here too. 4:26 he shows how the csrf tokens appear in the html markup on the site. 5:03 now that our forums can submit to our view methods, lets (5:08 go to our accounts/views.py and go to register method) {% endcomment %}
                     <form action="{% url 'register'%}" method = 'POST'>
                     {% csrf_token %}

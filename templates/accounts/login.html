@@ -12,6 +12,10 @@
                     <i class="fas fa-sign-in-alt"></i> Login</h4>
                 </div>
                 <div class="card-body">
+{% comment %}Message Alerts -10:14 paste the message alert include into here. 10:28 if you test this out, you should be able to input into the forums and see the alert no matter what. 10:51 he decided to put a colon ":" after Error in the partial/_alerts.html. We can do whatever we want. 11:05 if we want the error to disappear on it's own, we can just add some custom JS. (11:13 go to btre/static/main.js)  {% endcomment %}
+                {% include 'partials/_alerts.html' %}
+
+
 {% comment %}Register & Login Templates - 3:39 when you have a forum and you want to make a post request, we want to have something called a CSRF token, and this prevents cross-site forgery. Basically, it ties your forum to the user session, that way no forgery can take place. https://portswigger.net/web-security/csrf/tokens, this can prevent things like users changing their email accounts or other information https://portswigger.net/web-security/csrf. 4:05 to enact this, all we have to do is go into the forum tag and input temple tag csrf_token. (4:22 go to templates/accounts/register.html to do samething)  {% endcomment %}
                 <form action="{% url 'login' %}" method = 'POST' >
                     {% csrf_token %}
