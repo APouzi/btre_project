@@ -77,7 +77,11 @@ def login(request):
 
 #Accounts App & URLs -8:00 logout isn't going to be a render but a redirect to index. Make sure to bring that into the imports from shortcuts.
 def logout(request):
-    return render('index')
+#Logout & Navbar Auth Links - 9:58 Here we want to insert an if statement asking if there is a post request going to this method, if that is the case, we want to logout. which we use auth.logout(request). We also want a success message. (11:50 go to templates/accounts/dashboard.html)
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request,'Logged Out')
+        return redirect('index')
 
 def dashboard(request):
     return render(request, 'accounts/dashboard.html')

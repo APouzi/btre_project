@@ -43,33 +43,62 @@
           {% endif %}>
 {% comment %} Index, About & Linking - 6:25 now for listing, we have a featured listings, if we try to do the same, we get an error because that doesn't exist, so for now put url 'index'. {% endcomment %}
 {% comment %} Listings URLs & Template - 14:22 we finally change this to the proper route, so now "url 'listings'". Then we put in the conditional li tag like above, and instead of about we test of listings {% endcomment %}
-            <a class="nav-link" href="{% url 'listings' %}"">Featured Listings</a>
+            <a class="nav-link" href="{% url 'listings' %}">Featured Listings</a>
           </li>
         </ul>
 {% comment %}Accounts App & URLs - 10:20 we want to be removing the href and inputting a url temple tag, you also want to do the same thing for login. This will allow the navbar navigation links. 11:34 we want to add conditional temple tags here to make sure django knows when to activate or highlight certain things if you are on a certain page. So we want to check if 'register' is in the request.path or current page cariable the we can activate the highlight. Do the same for login END OF VIDEO{% endcomment %}
         <ul class="navbar-nav ml-auto">
-          <li 
-          {% if 'register' in request.path %}
-            class="nav-item active mr-3"
-          {% else %}
-            class="nav-item mr-3"
-          {% endif %}
-          >
-            <a class="nav-link" href="{% url 'register' %}">
-              <i class="fas fa-user-plus"></i> Register</a>
-          </li>
-          <li 
-          {% if 'login' in request.path %}
-            class="nav-item active mr-3"
-          {% else %}
-            class="nav-item mr-3"
-          {% endif %}
-          >
-            <a class="nav-link" href="{% url 'login' %}">
-              <i class="fas fa-sign-in-alt"></i>
 
-              Login</a>
-          </li>
+        {% if user.is_authenticated %}
+{% comment %}Logout & Navbar Auth Links - 3:38 now we want to constuct a logout link, the trick here is that a logout cannot be just an a tag with an href that is a standard get request. it has to be a post, so what we have to do is create a forum that will look like a link. This is because a forum is what we use to get a post request. We could use JS and use construct some stuff, but this way is different. 
+4:20 lets first create the dashboard link, to do this, copy the entire register li and paste this inside the "if" tag. Then change the names to "dashboard" and get rid of the icon tag (i tag).  {% endcomment %}
+            <li 
+            {% if 'dashboard' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+            >
+{% comment %}Logout & Navbar Auth Links - 5:24 in addition to dashboard we want it to say "welcome, username".  {% endcomment %}
+             <a class = "nav-link">Welcome, {{ user.username }} </a> 
+              <a class="nav-link" href="{% url 'dashboard' %}">
+                Go To Dashboard</a>
+            </li>
+{% comment %}Logout & Navbar Auth Links - 6:35 lets take care of the log out. just do an <li></li>, for the li, it's going to have some bootstrap class and inside that we are going to have an "a" tag with a class of nav-link. Inside the a tag, we are going to have some JS inserted. Inside that a tag, we are going to have an icon tag that will have be the sign out logo. {% endcomment %}
+<li class = "nav-item mr-3" >
+{% comment %}Logout & Navbar Auth Links - 8:20 when we run this, its going to run that js, which is going to look for the logout form and submit that form. Under that we need to create the form for that with an action of a url tag that takes us to "logout" . Inside the form, we do want to put a csrf_token, just like with the other post form. We also need a input and we are going to make that hidden. (9:40 go to accounts/views.py) {% endcomment %}
+<a href="javascript:{document.getElementById('logout').submit()}" class="nav-link"> <i class="fas fa-sign-out-alt">Logout</i></a>
+<form action="{% url 'logout' %}" method = "POST" id = "logout">
+{% csrf_token %}
+<input type="hidden">
+</form>
+</li>
+        {% else %}
+{% comment %}Logout & Navbar Auth Links - 2:29 Right in the ul, above the li, we are going to be putting the conditional for the navigation links for the registration and login. We are goign tob e doing this by grabbing the user and then using the function called ".is_authenticated", we are also going to put everything that is currently available in the "else" temple tag {% endcomment %}    
+            <li 
+            {% if 'register' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+            >
+              <a class="nav-link" href="{% url 'register' %}">
+                <i class="fas fa-user-plus"></i> Register</a>
+            </li>
+            <li 
+            {% if 'login' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+            >
+              <a class="nav-link" href="{% url 'login' %}">
+                <i class="fas fa-sign-in-alt"></i>
+
+                Login</a>
+            </li>
+
+        {% endif %}
         </ul>
       </div>
     </div>
