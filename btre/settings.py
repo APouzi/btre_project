@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     'realtors.apps.RealtorsConfig',
 #Accounts App & URLs - 5:12 right below the realtors, we want to include the accounts app into installed apps. (5:29 go to accounts/urls.py)
     'accounts.apps.AccountsConfig',
+#Contacts App & Model - 4:59 go to  here and input the new app we created
+    'contacts.apps.ContactsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
