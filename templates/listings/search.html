@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% comment %}Search From Choices - 8:13 we paste the contents into here, between the blocks. then we also want to make sure we load humanize here so we can use that for the numbers. Now if we load this, we get abunch of listings that is hardcoded into CSS, but what we need is to dynamically post the results from the search. (9:50 lets go to listings/views.py) {% endcomment %}
 {% load humanize %}
+
+{% comment %}Dynamic Page Titles -  4:01 paste the tags here. (go to template/listing/listing.html) {% endcomment %}
+{% block title %} | Search Listings {% endblock  %}
+
 {% block content %}
 
 {% comment %}Search From Choices -  11:00 We will now be inputting the same thing we did with the choices as we did with index.html. Inputting for loops with the dynamic values END OF VIDEO  {% endcomment %}

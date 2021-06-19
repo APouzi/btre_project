@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+
+{% comment %}Dynamic Page Titles -  4:50 title block with |Register in there. (4:57 go to login.html) {% endcomment %}
+{% block title %} | Register{% endblock %}
+
 {% block content %}
 
 {% comment %}Register & Login Templates - 00:25 We want to go to notepad++ to get the already assembled html/css for login and register and paste within the two files. 2:20 the fields in these two files are going to go to accounts/view.py the register method. If we post to this method, we want it to go to register in the views. So in the action, what we need to do is to change action of the form to a url temple tag and have the tag go to register, and by default when we do this , it's going to be a get method, what we want is the method to be a post so we have to specify thatmethod = 'POST'. Do the same to login page (3:39 go to templates/accounts/login.html).  {% endcomment %}

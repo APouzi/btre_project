@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% comment %} Bootstrap Layout Markup - 4:45 Dont forget lightbox {% endcomment %}
     <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
-    <title>BT Real Estate</title>
+
+    {% comment %}Dynamic Page Titles -  00:51 We will be inputting dynamic titles into here, we will be putting the block for the title here. (1:44 go to templates/pages/index.html) {% endcomment %}
+    <title>BT Real Estate {% block title %} {% endblock %}</title>
 </head>
 <body>
 

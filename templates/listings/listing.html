@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% comment %}Single Listing Page -2:06 we copy and paste the html into the block content and then we load humanize (2:46 go to listings/views.py) {% endcomment %}
 {% load humanize %}
+
+{% comment %}Dynamic Page Titles -  4:20 we want to have dynamic title here, so we input a dynamic variable in there. (4:40 go to template/accounts/register.html) {% endcomment %}
+{% block title %} | {{ listing.title }} {% endblock  %}
+
 {% block content %}
 {% comment %}Single Listing Page -5:21 lets replace the title. 5:45 lets finish this up and replace street. Then we fix up the breadcrumbs   {% endcomment %}
 <section id="showcase-inner" class="py-5 text-white">

@@ -5,6 +5,10 @@
 
 {% load humanize %}
 
+{% comment %}Dynamic Page Titles -  2:30 Here we are going to be putting the block title and then "| Welcome" inside. 2:39 Now if we go to the website, we can see "BT Real Estate | Welcome". Since base has the "BT Real Estate" all the site have "BT Real Estate". (2:50 copy the line and go to templates/listings/listings.html)   {% endcomment %}
+{% block title %} | Welcome {% endblock  %}
+
+
 {% block content%}
   <section id="showcase">
     <div class="container text-center">

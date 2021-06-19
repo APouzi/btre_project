@@ -70,3 +70,5 @@
 #User Login - 00:00 Make the login in functions ( 00:18 go to accounts/views.py)
 
 #Logout & Navbar Auth Links - 00:00 Now we need to create the dashboard, go to notepad++ get the contents from btre_resources and paste that into the dashboard.html file in templates. (00:56 go to templates/accounts/dashboard.html)
+
+#Dynamic Page Titles - 00:00  We are going to be adding dynamic titles in the tabs, titles and everywhere. (00:31 go to base.html)
