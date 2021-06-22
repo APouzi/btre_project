@@ -77,3 +77,5 @@
 # ----------------------------------Section 9: Contact Inquiries-------------------------------------------
 
 #Contacts App & Model - 00:00 We want to create the contacts app, so we want to run "python manage.py startapp", the first thing we should do is create our model. (00:41 go to contacts/models.py)
+
+# Contacts Admin Customization - 00:00 We now want to customize the admin area.  (00:15 go to contacts/admin.py)

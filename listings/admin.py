@@ -9,7 +9,7 @@ from .models import Listing
 
 #Customize Admin Display Data - 00:30 you want to create a class called ListingAdmin and pass in there something called "admin.ModelAdmin". Also we need to pass in "ListingAdmin" into "admin.site.register(Listing)", so it becomes "admin.site.register(Listing, ListingAdmin)"
 class ListingAdmin(admin.ModelAdmin):
-#Customize Admin Display Data -1:00 so we want to define what we want in the table or in he list. For this we do "list_display", inside we want the fields we want shown. Whats's cool is when you do a bool value, it actually shows you checkbox. After this we see that it was a success
+#Customize Admin Display Data -1:00 so we want to define what we want in the table or in the list. For this we do "list_display", inside we want the fields we want shown. Whats's cool is when you do a bool value, it actually shows you checkbox. After this we see that it was a success
   list_display = ('id', 'title', 'is_published', 'price', 'list_date', 'realtor')
 #Customize Admin Display Data - 2:31 we can't click on the title to get to the articles there, but I can with ID simply because it's the first one. To change that we are going to have the have the links accepted.   
   list_display_links = ('id', 'title')
